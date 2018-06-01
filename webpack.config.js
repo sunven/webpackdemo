@@ -1,12 +1,38 @@
 module.exports = {
-	devtool: 'eval-source-map',
+	//devtool: 'eval-source-map',
 	module: {
 		rules: [{
-			test: /\.css$/,
-			use: [
-				'css-loader'
-			]
-		}]
+				test: /\.css$/,
+				use: [{
+						loader: "style-loader"
+					},
+					{
+						loader: "css-loader"
+					}
+				]
+			}, {
+				test: /\.(png|jpg|gif)$/,
+				use: [{
+					loader: 'url-loader',
+					options: {
+						limit: 81920,
+						name: "[path][name].[ext]",
+					}
+				}]
+			},
+			// 'transform-runtime' 插件告诉 babel 要引用 runtime 来代替注入。
+			{
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['env'],
+						plugins: ['transform-runtime']
+					}
+				}
+			}
+		]
 	},
 	plugins: [],
 
