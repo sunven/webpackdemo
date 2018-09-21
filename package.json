@@ -25,6 +25,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "uglify-js": "^3.4.9"
   }
 }
